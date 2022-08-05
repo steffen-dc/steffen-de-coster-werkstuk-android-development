@@ -37,6 +37,7 @@ class HomeFragment : Fragment() {
         val textView: TextView = binding.textHome
         homeViewModel.listOfGamesResults.observe(viewLifecycleOwner) {
             textView.text = homeViewModel.listOfGamesResults.value?.size.toString()
+            textView.text = homeViewModel.gameLookupResult.value?.info?.title
         }
 
         return root

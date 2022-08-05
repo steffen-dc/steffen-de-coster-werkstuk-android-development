@@ -22,6 +22,8 @@ private val retrofit = Retrofit.Builder()
 interface CheapSharkApiService {
     @GET("games")
     suspend fun getListOfGamesByTitle(@Query("title") title: String): List<ListOfGamesResult>
+    @GET("games")
+    suspend fun getGameLookupById(@Query("id") id: String): GameLookupResult
 }
 
 object CheapSharkApi {
