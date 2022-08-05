@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cheapfreegames.network.CheapSharkApi
 import com.example.cheapfreegames.network.GameLookupResult
+import com.example.cheapfreegames.network.ListOfDealsResult
 import com.example.cheapfreegames.network.ListOfGamesResult
 import kotlinx.coroutines.launch
 
@@ -20,12 +21,16 @@ class HomeViewModel : ViewModel() {
     private val _listOfGamesResults = MutableLiveData<List<ListOfGamesResult>>()
     val listOfGamesResults: LiveData<List<ListOfGamesResult>> = _listOfGamesResults
 
-    private val _gameLookupResult = MutableLiveData<GameLookupResult>()
-    val gameLookupResult: LiveData<GameLookupResult> = _gameLookupResult
+    private val _gameLookupResult = MutableLiveData<GameLookupResult?>()
+    val gameLookupResult: LiveData<GameLookupResult?> = _gameLookupResult
+
+    private val _listOfDealsResults = MutableLiveData<List<ListOfDealsResult>>()
+    val listOfDealsResults: LiveData<List<ListOfDealsResult>> = _listOfDealsResults
 
     init {
         getListOfGamesByTitle("batman")
         getGameLookupById("612")
+        getListOfDealsByTitle("batman")
     }
 
     private fun getListOfGamesByTitle(title: String) {
@@ -45,6 +50,18 @@ class HomeViewModel : ViewModel() {
                 _gameLookupResult.value = CheapSharkApi.retrofitService.getGameLookupById(id)
             } catch (e: Exception) {
                 Log.e("api-error", "error fetching game lookup by id $id \n$e")
+                _gameLookupResult.value = null
+            }
+        }
+    }
+
+    private fun getListOfDealsByTitle(title: String) {
+        viewModelScope.launch {
+            try {
+                _listOfDealsResults.value = CheapSharkApi.retrofitService.getListOfDealsByTitle(title)
+            } catch (e: Exception) {
+                Log.e("api-error", "error fetching list of deals by title $title \n$e")
+                _listOfDealsResults.value = listOf()
             }
         }
     }
