@@ -35,11 +35,12 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         val textView: TextView = binding.textHome
-        homeViewModel.listOfDealsResults.observe(viewLifecycleOwner) {
-            //textView.text = homeViewModel.listOfGamesResults.value?.size.toString()
-            //textView.text = homeViewModel.gameLookupResult.value?.info?.title
-            textView.text = homeViewModel.listOfDealsResults.value?.size?.toString()
-        }
+//        homeViewModel.dealLookupResult.observe(viewLifecycleOwner) {
+//            //textView.text = homeViewModel.listOfGamesResults.value?.size.toString()
+//            //textView.text = homeViewModel.gameLookupResult.value?.info?.title
+//            //textView.text = homeViewModel.listOfDealsResults.value?.size?.toString()
+//            textView.text = homeViewModel.dealLookupResult.value?.size.toString()
+//        }
 
         return root
     }
