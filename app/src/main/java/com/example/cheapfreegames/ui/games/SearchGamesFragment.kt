@@ -1,4 +1,4 @@
-package com.example.cheapfreegames.ui.gallery
+package com.example.cheapfreegames.ui.games
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.cheapfreegames.databinding.FragmentGalleryBinding
 
-class GalleryFragment : Fragment() {
+class SearchGamesFragment : Fragment() {
 
     private var _binding: FragmentGalleryBinding? = null
 
@@ -23,7 +23,7 @@ class GalleryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val galleryViewModel =
-            ViewModelProvider(this).get(GalleryViewModel::class.java)
+            ViewModelProvider(this).get(SearchGamesViewModel::class.java)
 
         _binding = FragmentGalleryBinding.inflate(inflater, container, false)
         val root: View = binding.root
