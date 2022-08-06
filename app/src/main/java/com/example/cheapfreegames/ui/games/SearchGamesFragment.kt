@@ -4,39 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.cheapfreegames.databinding.FragmentGalleryBinding
+import androidx.fragment.app.viewModels
+import com.example.cheapfreegames.databinding.FragmentSearchgamesBinding
 
 class SearchGamesFragment : Fragment() {
 
-    private var _binding: FragmentGalleryBinding? = null
+    private val viewModel: SearchGamesViewModel by viewModels()
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        val binding = FragmentSearchgamesBinding.inflate(inflater) // string
+        // val binding = GridViewItemBinding.inflate(inflater) // image
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val galleryViewModel =
-            ViewModelProvider(this).get(SearchGamesViewModel::class.java)
+        // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
+        binding.lifecycleOwner = this
 
-        _binding = FragmentGalleryBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        // Give the binding access to the SearchGamesViewModel
+        binding.viewModel = viewModel
 
-        val textView: TextView = binding.textGallery
-        galleryViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
-    }
+        binding.listOfGamesResultGrid.adapter = ListOfGamesResultGridAdapter()
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        return binding.root
     }
 }

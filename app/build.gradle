@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -31,6 +32,7 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
+        dataBinding true
         viewBinding true
     }
 }
@@ -56,5 +58,8 @@ dependencies {
     implementation 'com.squareup.moshi:moshi-kotlin:1.13.0'
 
     // logging for debugging api calls
-    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    implementation "com.squareup.okhttp3:logging-interceptor:4.10.0"
+
+    // image loading library
+    implementation "io.coil-kt:coil:1.1.1"
 }

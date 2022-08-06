@@ -12,8 +12,12 @@ import retrofit2.http.Query
 // https://apidocs.cheapshark.com/
 private const val BASE_URL = "https://www.cheapshark.com/api/1.0/"
 
-private val logging = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-private val okHttpClient = OkHttpClient.Builder().addInterceptor(logging).build()
+private val logging = HttpLoggingInterceptor()
+    .setLevel(HttpLoggingInterceptor.Level.BODY)
+
+private val okHttpClient = OkHttpClient.Builder()
+    .addInterceptor(logging)
+    .build()
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
