@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="menu_wishlist">Verlanglijstje</string>
-    <string name="menu_search_games">Zoek Spellen</string>
     <string name="action_settings">Instellingen</string>
     <string name="navigation_drawer_open">Open menu</string>
     <string name="navigation_drawer_close">Sluit menu</string>
+    <string name="search_game">Zoek Spel</string>
+    <string name="game_title">Game Title</string>
+    <string name="search_action">Zoek</string>
 </resources>

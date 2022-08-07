@@ -15,7 +15,12 @@ class SearchGamesViewModel : ViewModel() {
     val listOfGamesResults: LiveData<List<ListOfGamesResult>> = _listOfGamesResults
 
     init {
-        getListOfGamesByTitle("batman")
+        _listOfGamesResults.value = listOf()
+//        getListOfGamesByTitle("elder scrolls")
+    }
+
+    fun searchGame(title: String){
+        getListOfGamesByTitle(title)
     }
 
     private fun getListOfGamesByTitle(title: String) {

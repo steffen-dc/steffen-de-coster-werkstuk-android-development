@@ -12,8 +12,12 @@ class SearchGamesFragment : Fragment() {
 
     private val viewModel: SearchGamesViewModel by viewModels()
 
+    // Binding object instance corresponding to the fragment_searchgames.xml layout
+    private var _binding: FragmentSearchgamesBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val binding = FragmentSearchgamesBinding.inflate(inflater) // string
+        _binding = FragmentSearchgamesBinding.inflate(inflater) // string
         // val binding = GridViewItemBinding.inflate(inflater) // image
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
@@ -24,6 +28,15 @@ class SearchGamesFragment : Fragment() {
 
         binding.listOfGamesResultGrid.adapter = ListOfGamesResultGridAdapter()
 
+        // set search action listener
+        binding.searchAction.setOnClickListener{
+            searchGame()
+        }
+
         return binding.root
+    }
+
+    private fun searchGame() {
+        binding.viewModel?.searchGame(binding.gameTitle.text.toString())
     }
 }

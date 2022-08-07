@@ -15,7 +15,7 @@ import com.example.cheapfreegames.network.ListOfGamesResult
 class ListOfGamesResultGridAdapter : ListAdapter<ListOfGamesResult, ListOfGamesResultGridAdapter.ListOfGamesResultsViewHolder>(DiffCallback) {
 
     /**
-     * The MarsPhotosViewHolder constructor takes the binding variable from the associated
+     * The ListOfGamesResultsViewHolder constructor takes the binding variable from the associated
      * GridViewItem, which nicely gives it access to the full [ListOfGamesResult] information.
      */
     class ListOfGamesResultsViewHolder(private var binding: ListOfGamesResultGridItemBinding) : RecyclerView.ViewHolder(binding.root) {
