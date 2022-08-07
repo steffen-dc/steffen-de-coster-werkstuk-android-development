@@ -20,6 +20,7 @@ class SearchGamesViewModel : ViewModel() {
     }
 
     fun searchGame(title: String){
+        if (title.isBlank()) _listOfGamesResults.value = listOf()
         getListOfGamesByTitle(title)
     }
 
