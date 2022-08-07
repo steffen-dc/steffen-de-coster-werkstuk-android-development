@@ -15,7 +15,7 @@
         android:id="@+id/nav_gallery"
         android:name="com.example.cheapfreegames.ui.games.SearchGamesFragment"
         android:label="@string/search_game"
-        tools:layout="@layout/fragment_searchgames" />
+        tools:layout="@layout/fragment_search_games" />
 
     <fragment
         android:id="@+id/nav_slideshow"
