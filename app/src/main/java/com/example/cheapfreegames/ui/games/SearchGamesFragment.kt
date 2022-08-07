@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.cheapfreegames.Util
 import com.example.cheapfreegames.databinding.FragmentSearchGamesBinding
 
 class SearchGamesFragment : Fragment() {
@@ -38,5 +39,6 @@ class SearchGamesFragment : Fragment() {
 
     private fun searchGame() {
         binding.viewModel?.searchGame(binding.gameTitle.text.toString())
+        Util.hideKeyboard(this)
     }
 }
