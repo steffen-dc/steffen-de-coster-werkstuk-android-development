@@ -10,47 +10,49 @@
             type="com.example.cheapfreegames.network.ListOfGamesResult" />
     </data>
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="4dp"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true">
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="4dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
 
-            <ImageView
-                android:id="@+id/list_of_games_result_image"
-                app:imageUrl="@{listOfGamesResult.thumb}"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:contentDescription="@null"
-                tools:src="@tools:sample/backgrounds/scenic"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <TextView
-                android:id="@+id/title"
-                style="@style/CardViewGameTitle"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:padding="8dp"
-                android:text="game title"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/list_of_games_result_image"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginLeft="8dp" />
+                android:layout_height="wrap_content">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/list_of_games_result_image"
+                    app:imageUrl="@{listOfGamesResult.thumb}"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:contentDescription="@null"
+                    tools:src="@tools:sample/backgrounds/scenic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
-    </com.google.android.material.card.MaterialCardView>
+                <TextView
+                    android:id="@+id/title"
+                    style="@style/CardViewGameTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="8dp"
+                    android:text="game title"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/list_of_games_result_image"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginLeft="8dp" />
 
-
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
 </layout>
