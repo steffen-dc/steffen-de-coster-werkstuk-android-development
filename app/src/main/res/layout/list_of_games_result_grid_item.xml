@@ -39,18 +39,33 @@
                 <TextView
                     android:id="@+id/title"
                     style="@style/CardViewGameTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:padding="8dp"
-                    android:text="game title"
+                    android:text="@{listOfGamesResult.external}"
                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/list_of_games_result_image"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginLeft="8dp" />
+                    android:layout_marginLeft="8dp"
+                    tools:text="game title"/>
+
+                <TextView
+                    android:id="@+id/cheapest_price"
+                    style="@style/CardViewCheapestPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:padding="8dp"
+                    app:price="@{listOfGamesResult.cheapest}"
+                    android:textColor="?android:textColorSecondary"
+                    app:layout_constraintStart_toEndOf="@+id/list_of_games_result_image"
+                    app:layout_constraintTop_toBottomOf="@+id/title"
+                    android:layout_marginLeft="8dp"
+                    tools:text="$ 3.99"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

@@ -23,7 +23,10 @@
 
     <style name="Theme.CheapFreeGames.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <!-- List of Games CardView -->
     <style name="CardViewGameTitle" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="android:textColor">@color/white</item>
     </style>
+    <style name="CardViewCheapestPrice" parent="TextAppearance.MaterialComponents.Headline6" />
+
 </resources>
