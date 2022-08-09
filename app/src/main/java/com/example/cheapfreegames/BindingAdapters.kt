@@ -1,11 +1,13 @@
 package com.example.cheapfreegames
 
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.cheapfreegames.network.ApiStatus
 import com.example.cheapfreegames.network.ListOfGamesResult
 import com.example.cheapfreegames.ui.searchgames.ListOfGamesResultGridAdapter
 
@@ -13,7 +15,7 @@ import com.example.cheapfreegames.ui.searchgames.ListOfGamesResultGridAdapter
 fun bindPrice(textView: TextView, price: String?){
     price?.let {
         val priceText = "$ $price"
-        textView.text = priceText;
+        textView.text = priceText
     }
 }
 
@@ -23,10 +25,10 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
         val imgUri = imgUrl.toUri().buildUpon().build()
 
         imgView.load(imgUri)
-//        imgView.load(imgUri) {
-//            placeholder(R.drawable.loading_animation)
-//            error(R.drawable.ic_broken_image)
-//        }
+        imgView.load(imgUri) {
+            placeholder(R.drawable.loading_animation)
+            error(R.drawable.ic_broken_image)
+        }
     }
 }
 
@@ -36,5 +38,24 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<ListOfGamesResult>?)
     adapter.submitList(data)
 }
 
-class BindingAdapters {
+@BindingAdapter("apiStatus")
+fun bindApiStatus(imageView: ImageView, apiStatus: ApiStatus?) {
+
+    if (apiStatus == null) return
+
+    when (apiStatus) {
+        ApiStatus.LOADING -> {
+            imageView.visibility = View.VISIBLE
+            imageView.setImageResource(R.drawable.loading_animation)
+        }
+
+        ApiStatus.DONE -> {
+            imageView.visibility = View.GONE
+        }
+
+        else -> {
+            imageView.visibility = View.VISIBLE
+            imageView.setImageResource(R.drawable.ic_connection_error)
+        }
+    }
 }

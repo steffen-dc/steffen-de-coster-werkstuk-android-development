@@ -18,8 +18,7 @@ class SearchGamesFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = FragmentSearchGamesBinding.inflate(inflater) // string
-        // val binding = GridViewItemBinding.inflate(inflater) // image
+        _binding = FragmentSearchGamesBinding.inflate(inflater)
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.lifecycleOwner = this
