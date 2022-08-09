@@ -6,6 +6,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import coil.load
 import com.example.cheapfreegames.databinding.ActivityGameBinding
 import com.example.cheapfreegames.network.GameLookupResult
 
@@ -19,7 +20,7 @@ class GameActivity : AppCompatActivity() {
         val binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Give the binding access to the SearchGamesViewModel
+        binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
         // get gameId from explicit intent
@@ -31,12 +32,13 @@ class GameActivity : AppCompatActivity() {
         title = gameId // for testing
 
         // create observer to update ui after fetching data from api
-        val gameLookupResultObserver = Observer<GameLookupResult?> { gameLookupResult ->
-            // update the ui
-            binding.gameTitle.text = gameLookupResult.info?.title
-        }
-
-        viewModel.gameLookupResult.observe(this, gameLookupResultObserver)
+//        val gameLookupResultObserver = Observer<GameLookupResult?> { gameLookupResult ->
+//            // update the ui
+//            binding.gameTitle.text = gameLookupResult.info?.title
+//            binding.gameImage.load(gameLookupResult.info?.thumb)
+//        }
+//
+//        viewModel.gameLookupResult.observe(this, gameLookupResultObserver)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
