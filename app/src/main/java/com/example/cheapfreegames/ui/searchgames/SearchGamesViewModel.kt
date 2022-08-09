@@ -1,4 +1,4 @@
-package com.example.cheapfreegames.ui.games
+package com.example.cheapfreegames.ui.searchgames
 
 import android.util.Log
 import androidx.lifecycle.LiveData

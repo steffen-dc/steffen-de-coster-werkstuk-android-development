@@ -7,7 +7,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.cheapfreegames.network.ListOfGamesResult
-import com.example.cheapfreegames.ui.games.ListOfGamesResultGridAdapter
+import com.example.cheapfreegames.ui.searchgames.ListOfGamesResultGridAdapter
 
 @BindingAdapter("price")
 fun bindPrice(textView: TextView, price: String?){

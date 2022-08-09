@@ -1,4 +1,4 @@
-package com.example.cheapfreegames.ui.games
+package com.example.cheapfreegames.ui.searchgames
 
 import android.os.Bundle
 import android.view.LayoutInflater
