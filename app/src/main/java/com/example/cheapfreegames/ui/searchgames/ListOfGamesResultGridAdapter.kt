@@ -1,12 +1,16 @@
 package com.example.cheapfreegames.ui.searchgames
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cheapfreegames.R
 import com.example.cheapfreegames.databinding.ListOfGamesResultGridItemBinding
 import com.example.cheapfreegames.network.ListOfGamesResult
+import com.example.cheapfreegames.ui.game.GameActivity
 
 /**
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
@@ -19,6 +23,9 @@ class ListOfGamesResultGridAdapter : ListAdapter<ListOfGamesResult, ListOfGamesR
      * GridViewItem, which nicely gives it access to the full [ListOfGamesResult] information.
      */
     class ListOfGamesResultsViewHolder(private var binding: ListOfGamesResultGridItemBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        val cardView: CardView = binding.root.findViewById(R.id.card)
+
         fun bind(listOfGamesResult: ListOfGamesResult) {
             binding.listOfGamesResult = listOfGamesResult
             // This is important, because it forces the data binding to execute immediately,
@@ -54,5 +61,13 @@ class ListOfGamesResultGridAdapter : ListAdapter<ListOfGamesResult, ListOfGamesR
     override fun onBindViewHolder(holder: ListOfGamesResultsViewHolder, position: Int) {
         val listOfGamesResult = getItem(position)
         holder.bind(listOfGamesResult)
+
+        // create explicit intent to pass gameId to game activity
+        holder.cardView.setOnClickListener {
+            val context = holder.cardView.context
+            val intent = Intent(context, GameActivity::class.java)
+            intent.putExtra("gameId", holder.cardView.tag.toString())
+            context.startActivity(intent)
+        }
     }
 }
