@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.cheapfreegames.ui.game.GameViewModel" />
+    </data>
+
     <!--<data>
         <variable
             name="gameLookupResult"
@@ -14,9 +20,10 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/game_id"
+            android:id="@+id/game_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:text="@{viewModel.gameLookupResult.info.title}"
             tools:text="game id"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

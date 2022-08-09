@@ -15,9 +15,6 @@ class HomeViewModel : ViewModel() {
     }
     val text: LiveData<String> = _text
 
-    private val _gameLookupResult = MutableLiveData<GameLookupResult?>()
-    val gameLookupResult: LiveData<GameLookupResult?> = _gameLookupResult
-
     private val _listOfDealsResults = MutableLiveData<List<ListOfDealsResult>>()
     val listOfDealsResults: LiveData<List<ListOfDealsResult>> = _listOfDealsResults
 
@@ -28,19 +25,6 @@ class HomeViewModel : ViewModel() {
 //        getGameLookupById("612")
 //        getListOfDealsByTitle("batman")
 //        getDealLookupById("X8sebHhbc1Ga0dTkgg59WgyM506af9oNZZJLU9uSrX8%3D")
-    }
-
-    private fun getGameLookupById(id: String) {
-        viewModelScope.launch {
-            try {
-                Log.i("api", "fetching game lookup by id $id ...")
-                _gameLookupResult.value = CheapSharkApi.retrofitService.getGameLookupById(id)
-                Log.i("api", "title of game lookup found by id $id: " + _gameLookupResult.value?.info?.title)
-            } catch (e: Exception) {
-                Log.e("api-error", "error fetching game lookup by id $id \n$e")
-                _gameLookupResult.value = null
-            }
-        }
     }
 
     private fun getListOfDealsByTitle(title: String) {

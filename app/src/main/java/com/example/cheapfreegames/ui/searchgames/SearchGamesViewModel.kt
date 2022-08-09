@@ -16,7 +16,6 @@ class SearchGamesViewModel : ViewModel() {
 
     init {
         _listOfGamesResults.value = listOf()
-//        getListOfGamesByTitle("elder scrolls")
     }
 
     fun searchGame(title: String){
