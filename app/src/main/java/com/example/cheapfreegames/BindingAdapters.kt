@@ -8,7 +8,9 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.cheapfreegames.network.ApiStatus
+import com.example.cheapfreegames.network.Deal
 import com.example.cheapfreegames.network.ListOfGamesResult
+import com.example.cheapfreegames.ui.game.DealsGridAdapter
 import com.example.cheapfreegames.ui.searchgames.ListOfGamesResultGridAdapter
 
 @BindingAdapter("price")
@@ -32,9 +34,15 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
     }
 }
 
-@BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView, data: List<ListOfGamesResult>?) {
+@BindingAdapter("listOfGamesResultGridData")
+fun bindListOfGamesResultRecyclerView(recyclerView: RecyclerView, data: List<ListOfGamesResult>?) {
     val adapter = recyclerView.adapter as ListOfGamesResultGridAdapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("dealsGridData")
+fun bindDealsRecyclerView(recyclerView: RecyclerView, data: List<Deal>?) {
+    val adapter = recyclerView.adapter as DealsGridAdapter
     adapter.submitList(data)
 }
 

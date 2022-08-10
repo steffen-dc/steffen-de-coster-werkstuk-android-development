@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import coil.load
 import com.example.cheapfreegames.databinding.ActivityGameBinding
 import com.example.cheapfreegames.network.GameLookupResult
+import com.example.cheapfreegames.ui.searchgames.ListOfGamesResultGridAdapter
 
 class GameActivity : AppCompatActivity() {
 
@@ -22,6 +23,7 @@ class GameActivity : AppCompatActivity() {
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        binding.dealsGrid.adapter = DealsGridAdapter()
 
         // get gameId from explicit intent
         val gameId = intent?.extras?.getString("gameId").toString()

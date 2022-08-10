@@ -58,7 +58,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/search_action"
-            app:listData="@{viewModel.listOfGamesResults}"
+            app:listOfGamesResultGridData="@{viewModel.listOfGamesResults}"
             app:spanCount="1"
             tools:itemCount="16"
             tools:listitem="@layout/list_of_games_result_grid_item" />

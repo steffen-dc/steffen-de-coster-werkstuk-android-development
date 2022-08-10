@@ -55,6 +55,35 @@
                 android:text="@{viewModel.gameLookupResult.info.title}"
                 tools:text="game title"/>
 
+            <TextView
+                android:id="@+id/top_deals_label"
+                style="@style/GameTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:paddingTop="32dp"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintTop_toBottomOf="@+id/game_title"
+                android:text="@string/top_deals_label"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/deals_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/top_deals_label"
+                app:dealsGridData="@{viewModel.gameLookupResult.deals}"
+                app:spanCount="1"
+                tools:itemCount="16"
+                tools:listitem="@layout/deals_grid_item" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

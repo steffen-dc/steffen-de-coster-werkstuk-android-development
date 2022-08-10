@@ -9,4 +9,5 @@
     <string name="search_game">Search Game</string>
     <string name="game_title">Game Title</string>
     <string name="search_action">Search</string>
+    <string name="top_deals_label">Top Deals</string>
 </resources>
