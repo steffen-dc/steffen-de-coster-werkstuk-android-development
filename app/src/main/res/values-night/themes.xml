@@ -13,4 +13,12 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="GameTitle" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Price" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
 </resources>

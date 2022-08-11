@@ -1,5 +1,7 @@
 package com.example.cheapfreegames.ui.game
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
@@ -9,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cheapfreegames.R
 import com.example.cheapfreegames.databinding.DealsGridItemBinding
 import com.example.cheapfreegames.network.Deal
+
+val SEARCH_PREFIX = "https://www.cheapshark.com/redirect?dealID="
 
 class DealsGridAdapter : ListAdapter<Deal, DealsGridAdapter.DealsViewHolder>(DiffCallback) {
 
@@ -43,5 +47,11 @@ class DealsGridAdapter : ListAdapter<Deal, DealsGridAdapter.DealsViewHolder>(Dif
         holder.bind(deal)
 
         // create implicit intent to go to store website
+        holder.cardView.setOnClickListener {
+            val context = holder.cardView.context
+            val queryUrl: Uri = Uri.parse("${SEARCH_PREFIX}${deal.dealID}")
+            val intent = Intent(Intent.ACTION_VIEW, queryUrl)
+            context.startActivity(intent)
+        }
     }
 }
