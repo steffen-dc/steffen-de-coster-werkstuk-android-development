@@ -43,7 +43,7 @@ class GameViewModel : ViewModel() {
 
                 gameLookup.deals?.forEach{ d ->
                     val store = stores.find { s ->  s.storeID == d.storeID } ?: return@forEach
-                    val storeDeal = StoreDeal(store.storeID, store.storeName, store.images?.banner, store.images?.logo, store.images?.icon, d.dealID, store.isActive, d.price, d.retailPrice, d.savings)
+                    val storeDeal = StoreDeal(store.storeID, store.storeName, "https://www.cheapshark.com/${store.images?.banner}", "https://www.cheapshark.com/${store.images?.logo}", "https://www.cheapshark.com/${store.images?.icon}", d.dealID, store.isActive, d.price, d.retailPrice, d.savings)
                     storeDeals += storeDeal
                 }
 
