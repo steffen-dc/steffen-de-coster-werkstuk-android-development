@@ -4,7 +4,7 @@ data class Store(
     val storeID: String?,
     val storeName: String?,
     val isActive: Boolean?,
-    val images: List<Image>?,
+    val images: Image?,
 )
 
 // prefix = https://www.cheapshark.com/
