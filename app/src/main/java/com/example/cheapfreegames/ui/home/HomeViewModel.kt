@@ -5,7 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cheapfreegames.network.*
+import com.example.cheapfreegames.network.CheapSharkApi
+import com.example.cheapfreegames.network.model.DealLookupResult
+import com.example.cheapfreegames.network.model.ListOfDealsResult
 import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {

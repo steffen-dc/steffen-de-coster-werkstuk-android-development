@@ -1,4 +1,4 @@
-package com.example.cheapfreegames.network
+package com.example.cheapfreegames.network.model
 
 enum class ApiStatus {
     LOADING,

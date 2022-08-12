@@ -12,7 +12,7 @@
     <!--<data>
         <variable
             name="gameLookupResult"
-            type="com.example.cheapfreegames.network.GameLookupResult" />
+            type="com.example.cheapfreegames.network.model.GameLookupResult" />
     </data>-->
 
     <ScrollView

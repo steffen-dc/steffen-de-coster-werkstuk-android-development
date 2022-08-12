@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cheapfreegames.R
 import com.example.cheapfreegames.databinding.DealsGridItemBinding
-import com.example.cheapfreegames.network.Deal
+import com.example.cheapfreegames.network.model.Deal
 
 val SEARCH_PREFIX = "https://www.cheapshark.com/redirect?dealID="
 

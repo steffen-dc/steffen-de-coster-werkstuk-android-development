@@ -1,5 +1,6 @@
 package com.example.cheapfreegames.network
 
+import com.example.cheapfreegames.network.model.*
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient

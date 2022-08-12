@@ -1,4 +1,4 @@
-package com.example.cheapfreegames.network
+package com.example.cheapfreegames.network.model
 
 data class GameLookupResult (
     val info: Info?,

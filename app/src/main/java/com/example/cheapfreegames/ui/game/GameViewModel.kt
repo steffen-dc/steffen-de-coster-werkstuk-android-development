@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cheapfreegames.network.ApiStatus
 import com.example.cheapfreegames.network.CheapSharkApi
-import com.example.cheapfreegames.network.GameLookupResult
+import com.example.cheapfreegames.network.model.ApiStatus
+import com.example.cheapfreegames.network.model.GameLookupResult
 import kotlinx.coroutines.launch
 
 class GameViewModel : ViewModel() {

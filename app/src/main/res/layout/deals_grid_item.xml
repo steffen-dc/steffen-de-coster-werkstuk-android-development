@@ -9,7 +9,7 @@
     <data>
         <variable
             name="deal"
-            type="com.example.cheapfreegames.network.Deal" />
+            type="com.example.cheapfreegames.network.model.Deal" />
     </data>
 
     <RelativeLayout

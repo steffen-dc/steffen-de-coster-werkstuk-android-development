@@ -7,9 +7,9 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.cheapfreegames.network.ApiStatus
-import com.example.cheapfreegames.network.Deal
-import com.example.cheapfreegames.network.ListOfGamesResult
+import com.example.cheapfreegames.network.model.ApiStatus
+import com.example.cheapfreegames.network.model.Deal
+import com.example.cheapfreegames.network.model.ListOfGamesResult
 import com.example.cheapfreegames.ui.game.DealsGridAdapter
 import com.example.cheapfreegames.ui.searchgames.ListOfGamesResultGridAdapter
 

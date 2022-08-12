@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cheapfreegames.R
 import com.example.cheapfreegames.databinding.ListOfGamesResultGridItemBinding
-import com.example.cheapfreegames.network.ListOfGamesResult
+import com.example.cheapfreegames.network.model.ListOfGamesResult
 import com.example.cheapfreegames.ui.game.GameActivity
 
 /**

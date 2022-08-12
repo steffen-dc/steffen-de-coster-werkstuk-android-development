@@ -2,14 +2,9 @@ package com.example.cheapfreegames.ui.game
 
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import coil.load
 import com.example.cheapfreegames.databinding.ActivityGameBinding
-import com.example.cheapfreegames.network.GameLookupResult
-import com.example.cheapfreegames.ui.searchgames.ListOfGamesResultGridAdapter
 
 class GameActivity : AppCompatActivity() {
 
