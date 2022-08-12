@@ -10,28 +10,28 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cheapfreegames.R
 import com.example.cheapfreegames.databinding.DealsGridItemBinding
-import com.example.cheapfreegames.network.model.Deal
+import com.example.cheapfreegames.model.StoreDeal
 
-val SEARCH_PREFIX = "https://www.cheapshark.com/redirect?dealID="
+const val SEARCH_PREFIX = "https://www.cheapshark.com/redirect?dealID="
 
-class DealsGridAdapter : ListAdapter<Deal, DealsGridAdapter.DealsViewHolder>(DiffCallback) {
+class DealsGridAdapter : ListAdapter<StoreDeal, DealsGridAdapter.DealsViewHolder>(DiffCallback) {
 
     class DealsViewHolder(private var binding: DealsGridItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         val cardView: CardView = binding.root.findViewById(R.id.card)
 
-        fun bind(deal: Deal) {
-            binding.deal = deal
+        fun bind(storeDeal: StoreDeal) {
+            binding.storeDeal = storeDeal
             binding.executePendingBindings()
         }
     }
 
-    companion object DiffCallback : DiffUtil.ItemCallback<Deal>() {
-        override fun areItemsTheSame(oldItem: Deal, newItem: Deal): Boolean {
+    companion object DiffCallback : DiffUtil.ItemCallback<StoreDeal>() {
+        override fun areItemsTheSame(oldItem: StoreDeal, newItem: StoreDeal): Boolean {
             return oldItem.dealID == newItem.dealID
         }
 
-        override fun areContentsTheSame(oldItem: Deal, newItem: Deal): Boolean {
+        override fun areContentsTheSame(oldItem: StoreDeal, newItem: StoreDeal): Boolean {
             return oldItem.storeID == newItem.storeID
         }
     }
@@ -42,14 +42,14 @@ class DealsGridAdapter : ListAdapter<Deal, DealsGridAdapter.DealsViewHolder>(Dif
         )
     }
 
-    override fun onBindViewHolder(holder: DealsGridAdapter.DealsViewHolder, position: Int) {
-        val deal = getItem(position)
-        holder.bind(deal)
+    override fun onBindViewHolder(holder: DealsViewHolder, position: Int) {
+        val storeDeal = getItem(position)
+        holder.bind(storeDeal)
 
         // create implicit intent to go to store website
         holder.cardView.setOnClickListener {
             val context = holder.cardView.context
-            val queryUrl: Uri = Uri.parse("${SEARCH_PREFIX}${deal.dealID}")
+            val queryUrl: Uri = Uri.parse("${SEARCH_PREFIX}${storeDeal.dealID}")
             val intent = Intent(Intent.ACTION_VIEW, queryUrl)
             context.startActivity(intent)
         }

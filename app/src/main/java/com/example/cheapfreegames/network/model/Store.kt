@@ -3,7 +3,7 @@ package com.example.cheapfreegames.network.model
 data class Store(
     val storeID: String?,
     val storeName: String?,
-    val isActive: Boolean?,
+    val isActive: Int?,
     val images: Image?,
 )
 

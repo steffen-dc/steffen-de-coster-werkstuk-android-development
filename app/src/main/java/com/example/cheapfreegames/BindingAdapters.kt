@@ -7,6 +7,7 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.cheapfreegames.model.StoreDeal
 import com.example.cheapfreegames.network.model.ApiStatus
 import com.example.cheapfreegames.network.model.Deal
 import com.example.cheapfreegames.network.model.ListOfGamesResult
@@ -41,7 +42,7 @@ fun bindListOfGamesResultRecyclerView(recyclerView: RecyclerView, data: List<Lis
 }
 
 @BindingAdapter("dealsGridData")
-fun bindDealsRecyclerView(recyclerView: RecyclerView, data: List<Deal>?) {
+fun bindDealsRecyclerView(recyclerView: RecyclerView, data: List<StoreDeal>?) {
     val adapter = recyclerView.adapter as DealsGridAdapter
     adapter.submitList(data)
 }

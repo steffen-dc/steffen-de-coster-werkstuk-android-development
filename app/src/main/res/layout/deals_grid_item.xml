@@ -8,8 +8,8 @@
     <!-- need custom model for easier intent to website !!!!! -->
     <data>
         <variable
-            name="deal"
-            type="com.example.cheapfreegames.network.model.Deal" />
+            name="storeDeal"
+            type="com.example.cheapfreegames.model.StoreDeal" />
     </data>
 
     <RelativeLayout
@@ -18,7 +18,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card"
-            android:tag="@{deal.dealID}"
+            android:tag="@{storeDeal.dealID}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="4dp"
@@ -44,7 +44,7 @@
                     style="@style/GameTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{deal.storeID}"
+                    android:text="@{storeDeal.storeID}"
                     android:layout_margin="8dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -55,7 +55,7 @@
                     style="@style/Price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:price="@{deal.price}"
+                    app:price="@{storeDeal.price}"
                     android:layout_margin="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"

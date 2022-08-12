@@ -36,7 +36,7 @@
 
             <ImageView
                 android:id="@+id/game_image"
-                app:imageUrl="@{viewModel.gameLookupResult.info.thumb}"
+                app:imageUrl="@{viewModel.game.image}"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:contentDescription="@null"
@@ -52,7 +52,7 @@
                 android:layout_margin="4dp"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintTop_toBottomOf="@+id/game_image"
-                android:text="@{viewModel.gameLookupResult.info.title}"
+                android:text="@{viewModel.game.title}"
                 tools:text="game title"/>
 
             <TextView
@@ -79,7 +79,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/top_deals_label"
-                app:dealsGridData="@{viewModel.gameLookupResult.deals}"
+                app:dealsGridData="@{viewModel.game.storeDeals}"
                 app:spanCount="1"
                 tools:itemCount="16"
                 tools:listitem="@layout/deals_grid_item" />

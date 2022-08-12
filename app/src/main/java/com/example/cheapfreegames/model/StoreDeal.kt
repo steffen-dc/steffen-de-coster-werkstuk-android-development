@@ -8,7 +8,7 @@ class StoreDeal (
     val storeIcon: String?,
 
     val dealID: String?,
-    val isActive: Boolean?,
+    val isActive: Int?,
     val price: String?,
     val retailPrice: String?,
     val savings: String?,
