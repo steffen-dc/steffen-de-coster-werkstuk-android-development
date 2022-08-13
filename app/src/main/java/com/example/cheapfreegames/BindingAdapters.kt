@@ -1,5 +1,6 @@
 package com.example.cheapfreegames
 
+import android.graphics.Paint
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -19,6 +20,24 @@ fun bindPrice(textView: TextView, price: String?){
     price?.let {
         val priceText = "$ $price"
         textView.text = priceText
+    }
+}
+
+@BindingAdapter("savings")
+fun bindSavings(textView: TextView, savingsString: String?){
+    savingsString?.let {
+        val savings : Double = savingsString.toDouble()
+        val savingsText = "-${String.format("%.2f", savings)}%"
+        textView.text = savingsText
+    }
+}
+
+@BindingAdapter("retailPrice")
+fun bindRetailPrice(textView: TextView, retailPrice: String?){
+    retailPrice?.let {
+        val savingsText = "$ $retailPrice"
+        textView.text = savingsText
+        textView.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
     }
 }
 

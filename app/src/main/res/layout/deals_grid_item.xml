@@ -29,26 +29,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/list_of_games_result_image"-->
-<!--                    app:imageUrl="@{deal.thumb}"-->
-<!--                    android:layout_width="150dp"-->
-<!--                    android:layout_height="150dp"-->
-<!--                    android:contentDescription="@null"-->
-<!--                    tools:src="@tools:sample/backgrounds/scenic"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent"/>-->
+                <ImageView
+                    android:id="@+id/store_image"
+                    app:imageUrl="@{storeDeal.storeLogo}"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:contentDescription="@null"
+                    tools:src="@tools:sample/backgrounds/scenic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
                     android:id="@+id/game_title"
                     style="@style/GameTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{storeDeal.storeID}"
-                    android:layout_margin="8dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="8dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/store_image"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="store id"/>
+                    android:text="@{storeDeal.storeName}"
+                    tools:text="store name" />
 
                 <TextView
                     android:id="@+id/price"
@@ -57,10 +62,38 @@
                     android:layout_height="wrap_content"
                     app:price="@{storeDeal.price}"
                     android:layout_margin="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/store_image"
+                    app:layout_constraintTop_toBottomOf="@+id/game_title"
                     tools:text="$ 3.99"/>
+
+                <TextView
+                    android:id="@+id/savings"
+                    style="@style/Price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:savings="@{storeDeal.savings}"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/price"
+                    app:layout_constraintTop_toBottomOf="@+id/game_title"
+                    tools:text="-75%"/>
+
+                <TextView
+                    android:id="@+id/retail_price"
+                    style="@style/Price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:retailPrice="@{storeDeal.retailPrice}"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/savings"
+                    app:layout_constraintTop_toBottomOf="@+id/game_title"
+                    tools:text="$ 19.99"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

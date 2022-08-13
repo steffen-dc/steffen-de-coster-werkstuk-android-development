@@ -26,8 +26,6 @@ class GameActivity : AppCompatActivity() {
         // fetch game data
         binding.viewModel?.getGame(gameId)
 
-        title = gameId // for testing
-
         // create observer to update ui after fetching data from api
 //        val gameLookupResultObserver = Observer<GameLookupResult?> { gameLookupResult ->
 //            // update the ui

@@ -38,7 +38,7 @@
                 android:id="@+id/game_image"
                 app:imageUrl="@{viewModel.game.image}"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="175dp"
                 android:contentDescription="@null"
                 tools:src="@tools:sample/backgrounds/scenic"
                 app:layout_constraintStart_toStartOf="parent"
