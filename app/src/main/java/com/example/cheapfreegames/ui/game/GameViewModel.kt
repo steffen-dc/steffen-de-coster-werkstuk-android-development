@@ -1,17 +1,21 @@
 package com.example.cheapfreegames.ui.game
 
+import android.app.Application
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.example.cheapfreegames.database.WishlistDatabase
+import com.example.cheapfreegames.database.WishlistGame
+import com.example.cheapfreegames.database.WishlistGameRepository
 import com.example.cheapfreegames.model.Game
 import com.example.cheapfreegames.model.StoreDeal
 import com.example.cheapfreegames.network.CheapSharkApi
 import com.example.cheapfreegames.network.model.ApiStatus
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
-class GameViewModel : ViewModel() {
+class GameViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val _repository: WishlistGameRepository
 
     private val _apiStatus = MutableLiveData<ApiStatus>()
     val apiStatus: LiveData<ApiStatus> = _apiStatus
@@ -19,9 +23,19 @@ class GameViewModel : ViewModel() {
     private val _game = MutableLiveData<Game?>()
     val game: LiveData<Game?> = _game
 
+    init{
+        val dao = WishlistDatabase.getDatabase(application).wishlistGameDao()
+        _repository = WishlistGameRepository(dao)
+    }
 
     fun getGame(gameId: String){
         getGameWithStoreDeals(gameId)
+    }
+
+    fun insertWishlistGame(gameId: String){
+        viewModelScope.launch {
+            _repository.insertWishlistGame(WishlistGame(gameId = gameId))
+        }
     }
 
     private fun getGameWithStoreDeals(gameId: String){

@@ -10,4 +10,5 @@
     <string name="game_title">Game Title</string>
     <string name="search_action">Search</string>
     <string name="top_deals_label">Top Deals</string>
+    <string name="add_to_wishlist">Add to wishlist</string>
 </resources>

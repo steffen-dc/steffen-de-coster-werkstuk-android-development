@@ -1,19 +1,31 @@
 package com.example.cheapfreegames.ui.game
 
+import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
 import android.view.MenuItem
-import androidx.activity.viewModels
+import android.view.View
+
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.example.cheapfreegames.databinding.ActivityGameBinding
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.launch
 
 class GameActivity : AppCompatActivity() {
 
-    private val viewModel: GameViewModel by viewModels()
+    private val viewModel: GameViewModel by lazy {
+        ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[GameViewModel::class.java]
+    }
+
+    private var _binding: ActivityGameBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding = ActivityGameBinding.inflate(layoutInflater)
+        _binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.lifecycleOwner = this
@@ -26,14 +38,11 @@ class GameActivity : AppCompatActivity() {
         // fetch game data
         binding.viewModel?.getGame(gameId)
 
-        // create observer to update ui after fetching data from api
-//        val gameLookupResultObserver = Observer<GameLookupResult?> { gameLookupResult ->
-//            // update the ui
-//            binding.gameTitle.text = gameLookupResult.info?.title
-//            binding.gameImage.load(gameLookupResult.info?.thumb)
-//        }
-//
-//        viewModel.gameLookupResult.observe(this, gameLookupResultObserver)
+        // add game to wishlist
+        binding.wishlistActionButton.setOnClickListener { view ->
+            binding.viewModel?.insertWishlistGame(gameId)
+            Snackbar.make(view, "Game added to wishlist", Snackbar.LENGTH_LONG).setAction("Action", null).show()
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -43,9 +52,5 @@ class GameActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
     }
 }
