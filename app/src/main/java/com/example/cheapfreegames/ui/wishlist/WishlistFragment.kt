@@ -4,35 +4,33 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.cheapfreegames.databinding.FragmentSlideshowBinding
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import com.example.cheapfreegames.CheapGamesApplication
+import com.example.cheapfreegames.databinding.FragmentWishlistBinding
+import com.example.cheapfreegames.ui.searchgames.ListOfGamesResultGridAdapter
 
 class WishlistFragment : Fragment() {
 
-    private var _binding: FragmentSlideshowBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private val viewModel: WishlistViewModel by activityViewModels {
+        WishlistViewModelFactory((activity?.application as CheapGamesApplication).database.wishlistGameDao())
+    }
+    private var _binding: FragmentWishlistBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val slideshowViewModel =
-            ViewModelProvider(this).get(WishlistViewModel::class.java)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentWishlistBinding.inflate(inflater)
 
-        _binding = FragmentSlideshowBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
+        binding.lifecycleOwner = this
 
-        val textView: TextView = binding.textSlideshow
-        slideshowViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
+        // Give the binding access to the WishlistViewModel
+        binding.viewModel = viewModel
+
+        binding.listOfGamesResultGrid.adapter = ListOfGamesResultGridAdapter()
+
+        return binding.root
     }
 
     override fun onDestroyView() {
