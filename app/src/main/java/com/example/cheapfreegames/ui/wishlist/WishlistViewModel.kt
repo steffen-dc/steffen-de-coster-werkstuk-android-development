@@ -21,8 +21,8 @@ class WishlistViewModel(private val wishlistGameDao: WishlistGameDao) : ViewMode
     private val _apiStatus = MutableLiveData<ApiStatus>()
     val apiStatus: LiveData<ApiStatus> = _apiStatus
 
-    private val _gameLookupResults = MutableLiveData<List<GameLookupResult>>()
-    val gameLookupResults: LiveData<List<GameLookupResult>> = _gameLookupResults
+    private val _listOfGamesResults = MutableLiveData<List<ListOfGamesResult>>()
+    val listOfGamesResults: LiveData<List<ListOfGamesResult>> = _listOfGamesResults
 
     private val _repository: WishlistGameRepository = WishlistGameRepository(wishlistGameDao)
 
@@ -31,6 +31,7 @@ class WishlistViewModel(private val wishlistGameDao: WishlistGameDao) : ViewMode
     fun getWishlistedGames() {
         viewModelScope.launch(Dispatchers.Main) {
             _wishlistGames = _repository.getWishlistGames()
+            _listOfGamesResults.value = listOf()
             fetchWishlistedGames()
         }
     }
@@ -43,15 +44,19 @@ class WishlistViewModel(private val wishlistGameDao: WishlistGameDao) : ViewMode
                 _wishlistGames.forEach{ g ->
                     Log.i("api", "fetching game lookup by id ${g.gameId} ...")
                     val gameLookup = CheapSharkApi.retrofitService.getGameLookupById(g.gameId)
-                    _gameLookupResults.value = gameLookupResults.value?.plus(gameLookup) ?: listOf(gameLookup)
+
+                    // parse to ListOfGamesResult, so we can reuse ListOfGamesResultGridAdapter & list_of_games_result_grid_item.xml
+                    val listOfGameResult = ListOfGamesResult(gameID = g.gameId, thumb = gameLookup.info?.thumb, external = gameLookup.info?.title, cheapest = gameLookup.deals?.first()?.price)
+
+                    _listOfGamesResults.value = _listOfGamesResults.value?.plus(listOfGameResult)
                 }
 
-                Log.i("api", "${_gameLookupResults.value?.size} game lookup results found")
+                Log.i("api", "${_listOfGamesResults.value?.size} game lookup results found")
 
                 _apiStatus.value = ApiStatus.DONE
             } catch (e: Exception) {
                 _apiStatus.value = ApiStatus.ERROR
-                _gameLookupResults.value = listOf()
+                _listOfGamesResults.value = listOf()
                 Log.e("api-error", "error fetching wishlisted games\n$e")
             }
         }
