@@ -16,7 +16,7 @@ class WishlistGameRepository(private val wishlistGameDao: WishlistGameDao) {
         return wishlistGameDao.getWishlistGameByGameId(gameId)
     }
 
-    fun getWishlistGames() : Flow<List<WishlistGame>> {
+    suspend fun getWishlistGames() : List<WishlistGame> {
         return wishlistGameDao.getWishlistGames()
     }
 }

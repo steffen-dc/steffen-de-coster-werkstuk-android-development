@@ -30,6 +30,8 @@ class WishlistFragment : Fragment() {
 
         binding.listOfGamesResultGrid.adapter = ListOfGamesResultGridAdapter()
 
+        binding.viewModel?.getWishlistedGames()
+
         return binding.root
     }
 

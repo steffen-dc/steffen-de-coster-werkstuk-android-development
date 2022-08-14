@@ -16,6 +16,6 @@ interface WishlistGameDao {
     fun getWishlistGameByGameId(gameId: String): WishlistGame
 
     @Query("SELECT * FROM games")
-    fun getWishlistGames(): Flow<List<WishlistGame>>
+    suspend fun getWishlistGames(): List<WishlistGame>
 
 }
