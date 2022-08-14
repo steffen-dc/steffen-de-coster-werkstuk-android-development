@@ -11,6 +11,7 @@ import com.example.cheapfreegames.model.StoreDeal
 import com.example.cheapfreegames.network.CheapSharkApi
 import com.example.cheapfreegames.network.model.ApiStatus
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class GameViewModel(application: Application) : AndroidViewModel(application) {
@@ -38,6 +39,12 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun deleteWishlistGame(gameId: String) {
+        viewModelScope.launch {
+            _repository.deleteWishlistGame(gameId)
+        }
+    }
+
     private fun getGameWithStoreDeals(gameId: String){
         viewModelScope.launch {
             try {
@@ -54,14 +61,13 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
                 // link game to store
                 val storeDeals = mutableListOf<StoreDeal>()
-
                 gameLookup.deals?.forEach{ d ->
                     val store = stores.find { s ->  s.storeID == d.storeID } ?: return@forEach
                     val storeDeal = StoreDeal(store.storeID, store.storeName, "https://www.cheapshark.com/${store.images?.banner}", "https://www.cheapshark.com/${store.images?.logo}", "https://www.cheapshark.com/${store.images?.icon}", d.dealID, store.isActive, d.price, d.retailPrice, d.savings)
                     storeDeals += storeDeal
                 }
-
                 _game.value = Game(gameLookup.info?.title, gameLookup.info?.thumb, storeDeals)
+
                 _apiStatus.value = ApiStatus.DONE
             } catch (e: Exception) {
                 _apiStatus.value = ApiStatus.ERROR

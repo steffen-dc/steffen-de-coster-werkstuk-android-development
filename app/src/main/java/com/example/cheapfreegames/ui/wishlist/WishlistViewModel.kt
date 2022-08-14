@@ -30,8 +30,10 @@ class WishlistViewModel(private val wishlistGameDao: WishlistGameDao) : ViewMode
 
     fun getWishlistedGames() {
         viewModelScope.launch(Dispatchers.Main) {
+            // get gameIds from database
             _wishlistGames = _repository.getWishlistGames()
-            _listOfGamesResults.value = listOf()
+
+            // use gameIds from database to fetch games from api
             fetchWishlistedGames()
         }
     }
@@ -40,7 +42,7 @@ class WishlistViewModel(private val wishlistGameDao: WishlistGameDao) : ViewMode
         viewModelScope.launch {
             try {
                 _apiStatus.value = ApiStatus.LOADING
-
+                _listOfGamesResults.value = listOf()
                 _wishlistGames.forEach{ g ->
                     Log.i("api", "fetching game lookup by id ${g.gameId} ...")
                     val gameLookup = CheapSharkApi.retrofitService.getGameLookupById(g.gameId)

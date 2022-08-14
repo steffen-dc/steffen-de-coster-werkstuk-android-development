@@ -8,11 +8,11 @@ class WishlistGameRepository(private val wishlistGameDao: WishlistGameDao) {
         wishlistGameDao.insert(wishlistGame)
     }
 
-    suspend fun deleteWishlistGame(wishlistGame: WishlistGame) {
-        wishlistGameDao.delete(wishlistGame)
+    suspend fun deleteWishlistGame(gameId: String) {
+        wishlistGameDao.delete(gameId)
     }
 
-    fun getWishlistGameByGameId(gameId: String) : WishlistGame {
+    suspend fun getWishlistGameByGameId(gameId: String) : WishlistGame {
         return wishlistGameDao.getWishlistGameByGameId(gameId)
     }
 

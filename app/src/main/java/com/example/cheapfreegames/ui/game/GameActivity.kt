@@ -1,6 +1,8 @@
 package com.example.cheapfreegames.ui.game
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.util.AttributeSet
 import android.view.MenuItem
@@ -8,15 +10,25 @@ import android.view.View
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
+import com.example.cheapfreegames.R
+import com.example.cheapfreegames.database.WishlistDatabase
+import com.example.cheapfreegames.database.WishlistGameRepository
 import com.example.cheapfreegames.databinding.ActivityGameBinding
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class GameActivity : AppCompatActivity() {
 
     private val viewModel: GameViewModel by lazy {
         ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[GameViewModel::class.java]
+    }
+
+    private val _repository : WishlistGameRepository by lazy {
+        WishlistGameRepository(WishlistDatabase.getDatabase(application).wishlistGameDao())
     }
 
     private var _binding: ActivityGameBinding? = null
@@ -38,10 +50,30 @@ class GameActivity : AppCompatActivity() {
         // fetch game data
         binding.viewModel?.getGame(gameId)
 
+        // check if game already in wishlist
+        lifecycleScope.launch(Dispatchers.Main) {
+            val wishlistGame = _repository.getWishlistGameByGameId(gameId)
+
+            if (wishlistGame == null)
+                binding.deleteWishlistActionButton.hide()
+            else
+                binding.addWishlistActionButton.hide()
+        }
+
         // add game to wishlist
-        binding.wishlistActionButton.setOnClickListener { view ->
+        binding.addWishlistActionButton.setOnClickListener { view ->
             binding.viewModel?.insertWishlistGame(gameId)
             Snackbar.make(view, "Game added to wishlist", Snackbar.LENGTH_LONG).setAction("Action", null).show()
+            binding.addWishlistActionButton.hide()
+            binding.deleteWishlistActionButton.show()
+        }
+
+        // remove game from wishlist
+        binding.deleteWishlistActionButton.setOnClickListener { view ->
+            binding.viewModel?.deleteWishlistGame(gameId)
+            Snackbar.make(view, "Game removed from wishlist", Snackbar.LENGTH_LONG).setAction("Action", null).show()
+            binding.addWishlistActionButton.show()
+            binding.deleteWishlistActionButton.hide()
         }
     }
 

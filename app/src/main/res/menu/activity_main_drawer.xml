@@ -14,7 +14,7 @@
             android:title="@string/search_game" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_heart"
+            android:icon="@drawable/ic_heart_white"
             android:title="@string/menu_wishlist" />
     </group>
 </menu>
