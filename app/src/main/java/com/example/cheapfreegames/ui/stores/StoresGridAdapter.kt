@@ -9,21 +9,21 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cheapfreegames.R
 import com.example.cheapfreegames.databinding.StoresGridItemBinding
+import com.example.cheapfreegames.network.model.ListOfDealsResult
 import com.example.cheapfreegames.network.model.Store
+import kotlinx.coroutines.NonDisposableHandle.parent
 
 /**
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
  * data, including computing diffs between lists.
  */
-class StoresGridAdapter : ListAdapter<Store, StoresGridAdapter.StoresViewHolder>(DiffCallback) {
+class StoresGridAdapter(private val onStoreClicked: (Store) -> Unit) : ListAdapter<Store, StoresGridAdapter.StoresViewHolder>(DiffCallback) {
 
     /**
      * The StoresViewHolder constructor takes the binding variable from the associated
      * GridViewItem, which nicely gives it access to the full [Store] information.
      */
     class StoresViewHolder(private var binding: StoresGridItemBinding) : RecyclerView.ViewHolder(binding.root) {
-
-        val cardView: CardView = binding.root.findViewById(R.id.card)
 
         fun bind(store: Store) {
             binding.store = store
@@ -50,23 +50,20 @@ class StoresGridAdapter : ListAdapter<Store, StoresGridAdapter.StoresViewHolder>
     /**
      * Create new [RecyclerView] item views (invoked by the layout manager)
      */
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoresGridAdapter.StoresViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoresViewHolder {
         return StoresGridAdapter.StoresViewHolder(StoresGridItemBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     /**
      * Replaces the contents of a view (invoked by the layout manager)
      */
-    override fun onBindViewHolder(holder: StoresGridAdapter.StoresViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: StoresViewHolder, position: Int) {
         val store = getItem(position)
-        holder.bind(store)
 
-        // create explicit intent to pass gameId to game activity
-//        holder.cardView.setOnClickListener {
-//            val context = holder.cardView.context
-//            val intent = Intent(context, GameActivity::class.java)
-//            intent.putExtra("gameId", holder.cardView.tag.toString())
-//            context.startActivity(intent)
-//        }
+        holder.itemView.setOnClickListener {
+            onStoreClicked(store)
+        }
+
+        holder.bind(store)
     }
 }

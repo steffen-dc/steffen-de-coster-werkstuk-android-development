@@ -1,13 +1,14 @@
 package com.example.cheapfreegames.ui.stores
 
 import android.os.Bundle
+import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.cheapfreegames.databinding.FragmentStoresBinding
-import com.example.cheapfreegames.ui.searchgames.ListOfGamesResultGridAdapter
 
 class StoresFragment : Fragment() {
 
@@ -24,7 +25,10 @@ class StoresFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        binding.storesGrid.adapter = StoresGridAdapter()
+        binding.storesGrid.adapter = StoresGridAdapter{
+            val action = StoresFragmentDirections.actionNavStoresToStoreDealsFragment(it.storeID)
+            this.findNavController().navigate(action)
+        }
 
         return binding.root
     }
