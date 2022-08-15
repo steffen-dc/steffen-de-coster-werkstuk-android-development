@@ -15,18 +15,18 @@
         android:layout_height="match_parent"
         tools:context=".ui.wishlist.WishlistFragment">
 
-        <TextView
-            android:id="@+id/wishlist_label"
-            android:text="@string/menu_wishlist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:gravity="center_horizontal"/>
+<!--        <TextView-->
+<!--            android:id="@+id/wishlist_label"-->
+<!--            android:text="@string/menu_wishlist"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="8dp"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textSize="24sp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:gravity="center_horizontal"/>-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list_of_games_result_grid"
@@ -41,7 +41,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:listOfGamesResultGridData="@{viewModel.listOfGamesResults}"
-            app:layout_constraintTop_toBottomOf="@+id/wishlist_label"
+            app:layout_constraintTop_toTopOf="parent"
             app:spanCount="1"
             tools:itemCount="16"
             tools:listitem="@layout/list_of_games_result_grid_item" />

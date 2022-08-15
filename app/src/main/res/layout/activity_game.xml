@@ -57,8 +57,7 @@
                 android:layout_margin="4dp"
                 android:paddingTop="32dp"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintTop_toBottomOf="@+id/game_title"
-                android:text="@string/top_deals_label"/>
+                app:layout_constraintTop_toBottomOf="@+id/game_title"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/deals_grid"

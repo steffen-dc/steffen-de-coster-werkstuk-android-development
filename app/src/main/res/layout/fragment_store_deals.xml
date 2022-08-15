@@ -46,8 +46,7 @@
                 android:layout_margin="4dp"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintTop_toBottomOf="@+id/store_banner"
-                app:storeTopDealsText="@{viewModel.store.storeName}"
-                tools:text="Top deals"/>
+                tools:text="Top deals on store"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list_of_deals_result_grid"

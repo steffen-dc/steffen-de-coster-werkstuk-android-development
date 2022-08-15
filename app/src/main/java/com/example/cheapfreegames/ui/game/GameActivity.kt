@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.cheapfreegames.R
 import com.example.cheapfreegames.database.WishlistDatabase
 import com.example.cheapfreegames.database.WishlistGameRepository
 import com.example.cheapfreegames.databinding.ActivityGameBinding
@@ -56,7 +57,7 @@ class GameActivity : AppCompatActivity() {
         // add game to wishlist
         binding.addWishlistActionButton.setOnClickListener { view ->
             binding.viewModel?.insertWishlistGame(gameId)
-            Snackbar.make(view, "Game added to wishlist", Snackbar.LENGTH_LONG).setAction("Action", null).show()
+            Snackbar.make(view, getString(R.string.game_added_to_wishlist), Snackbar.LENGTH_LONG).setAction("Action", null).show()
             binding.addWishlistActionButton.hide()
             binding.deleteWishlistActionButton.show()
         }
@@ -64,7 +65,7 @@ class GameActivity : AppCompatActivity() {
         // remove game from wishlist
         binding.deleteWishlistActionButton.setOnClickListener { view ->
             binding.viewModel?.deleteWishlistGame(gameId)
-            Snackbar.make(view, "Game removed from wishlist", Snackbar.LENGTH_LONG).setAction("Action", null).show()
+            Snackbar.make(view, getString(R.string.game_removed_from_wishlist), Snackbar.LENGTH_LONG).setAction("Action", null).show()
             binding.addWishlistActionButton.show()
             binding.deleteWishlistActionButton.hide()
         }

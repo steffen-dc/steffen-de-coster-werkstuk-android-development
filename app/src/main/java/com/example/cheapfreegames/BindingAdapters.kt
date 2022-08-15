@@ -42,13 +42,6 @@ fun bindRetailPrice(textView: TextView, retailPrice: String?){
     }
 }
 
-@BindingAdapter("storeTopDealsText")
-fun bindStoreTopDealsText(textView: TextView, storeName: String?){
-    storeName?.let {
-        textView.text = "Top deals on $storeName"
-    }
-}
-
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {

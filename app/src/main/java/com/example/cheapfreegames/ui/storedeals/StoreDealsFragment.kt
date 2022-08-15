@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.example.cheapfreegames.R
 import com.example.cheapfreegames.databinding.FragmentStoreDealsBinding
 
 class StoreDealsFragment : Fragment() {
@@ -35,5 +36,9 @@ class StoreDealsFragment : Fragment() {
 
         if (navigationArgs.storeId == null) return
         binding.viewModel?.fetchStoreWithTopDeals(navigationArgs.storeId!!)
+
+        binding.apply {
+            topDealsLabel.text = String.format(getString(R.string.top_deals_on_store), navigationArgs.storeName)
+        }
     }
 }

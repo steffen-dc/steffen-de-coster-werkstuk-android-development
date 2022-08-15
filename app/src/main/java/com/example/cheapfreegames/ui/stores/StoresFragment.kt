@@ -26,7 +26,7 @@ class StoresFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.storesGrid.adapter = StoresGridAdapter{
-            val action = StoresFragmentDirections.actionNavStoresToStoreDealsFragment(it.storeID)
+            val action = StoresFragmentDirections.actionNavStoresToStoreDealsFragment(it.storeID, it.storeName)
             this.findNavController().navigate(action)
         }
 

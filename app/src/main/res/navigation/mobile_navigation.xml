@@ -36,13 +36,16 @@
     </fragment>
     <fragment
         android:id="@+id/storeDealsFragment"
-        android:name="com.example.cheapfreegames.ui.storedeals.StoreDealsFragment"
-        android:label="StoreDealsFragment" >
+        android:name="com.example.cheapfreegames.ui.storedeals.StoreDealsFragment" >
         <action
             android:id="@+id/action_storeDealsFragment_to_gameActivity"
             app:destination="@id/gameActivity" />
         <argument
             android:name="store_id"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="store_name"
             app:argType="string"
             app:nullable="true" />
     </fragment>
