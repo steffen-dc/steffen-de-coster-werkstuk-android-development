@@ -26,7 +26,12 @@ class StoresViewModel : ViewModel() {
             try {
                 _apiStatus.value = ApiStatus.LOADING
                 Log.i("api", "fetching stores ...")
-                _stores.value = CheapSharkApi.retrofitService.getStoresInfo()
+
+                val stores = CheapSharkApi.retrofitService.getStoresInfo()
+
+                // get active stores only
+                _stores.value = stores.filter { s -> s.isActive == 1 }
+
                 _apiStatus.value = ApiStatus.DONE
                 Log.i("api", "size list of stores found: " + _stores.value?.size.toString())
             } catch (e: Exception) {
