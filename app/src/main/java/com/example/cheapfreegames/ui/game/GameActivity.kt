@@ -1,24 +1,16 @@
 package com.example.cheapfreegames.ui.game
 
-import android.content.Context
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.MenuItem
-import android.view.View
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
-import com.example.cheapfreegames.R
 import com.example.cheapfreegames.database.WishlistDatabase
 import com.example.cheapfreegames.database.WishlistGameRepository
 import com.example.cheapfreegames.databinding.ActivityGameBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class GameActivity : AppCompatActivity() {
@@ -54,6 +46,7 @@ class GameActivity : AppCompatActivity() {
         lifecycleScope.launch(Dispatchers.Main) {
             val wishlistGame = _repository.getWishlistGameByGameId(gameId)
 
+            @Suppress("SENSELESS_COMPARISON")
             if (wishlistGame == null)
                 binding.deleteWishlistActionButton.hide()
             else

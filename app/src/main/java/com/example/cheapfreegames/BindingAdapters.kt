@@ -10,12 +10,10 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.cheapfreegames.model.StoreDeal
-import com.example.cheapfreegames.network.model.ApiStatus
-import com.example.cheapfreegames.network.model.Deal
-import com.example.cheapfreegames.network.model.ListOfGamesResult
-import com.example.cheapfreegames.network.model.Store
+import com.example.cheapfreegames.network.model.*
 import com.example.cheapfreegames.ui.game.DealsGridAdapter
 import com.example.cheapfreegames.ui.searchgames.ListOfGamesResultGridAdapter
+import com.example.cheapfreegames.ui.storedeals.ListOfDealsResultGridAdapter
 import com.example.cheapfreegames.ui.stores.StoresGridAdapter
 
 @BindingAdapter("price")
@@ -41,6 +39,13 @@ fun bindRetailPrice(textView: TextView, retailPrice: String?){
         val savingsText = "$ $retailPrice"
         textView.text = savingsText
         textView.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+    }
+}
+
+@BindingAdapter("storeTopDealsText")
+fun bindStoreTopDealsText(textView: TextView, storeName: String?){
+    storeName?.let {
+        textView.text = "Top deals on $storeName"
     }
 }
 
@@ -76,6 +81,12 @@ fun bindStoreImage(imgView: ImageView, imgUrl: String?) {
 @BindingAdapter("listOfGamesResultGridData")
 fun bindListOfGamesResultRecyclerView(recyclerView: RecyclerView, data: List<ListOfGamesResult>?) {
     val adapter = recyclerView.adapter as ListOfGamesResultGridAdapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("listOfDealsResultGridData")
+fun bindListOfDealsResultRecyclerView(recyclerView: RecyclerView, data: List<ListOfDealsResult>?) {
+    val adapter = recyclerView.adapter as ListOfDealsResultGridAdapter
     adapter.submitList(data)
 }
 

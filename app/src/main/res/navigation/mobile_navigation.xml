@@ -9,17 +9,41 @@
         android:id="@+id/nav_stores"
         android:name="com.example.cheapfreegames.ui.stores.StoresFragment"
         android:label="@string/menu_stores"
-        tools:layout="@layout/fragment_stores" />
+        tools:layout="@layout/fragment_stores" >
+        <action
+            android:id="@+id/action_nav_stores_to_storeDealsFragment"
+            app:destination="@id/storeDealsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_search_games"
         android:name="com.example.cheapfreegames.ui.searchgames.SearchGamesFragment"
         android:label="@string/menu_search_game"
-        tools:layout="@layout/fragment_search_games" />
+        tools:layout="@layout/fragment_search_games" >
+        <action
+            android:id="@+id/action_nav_search_games_to_gameActivity"
+            app:destination="@id/gameActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_wishlist"
         android:name="com.example.cheapfreegames.ui.wishlist.WishlistFragment"
         android:label="@string/menu_wishlist"
-        tools:layout="@layout/fragment_wishlist" />
+        tools:layout="@layout/fragment_wishlist" >
+        <action
+            android:id="@+id/action_nav_wishlist_to_gameActivity"
+            app:destination="@id/gameActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/storeDealsFragment"
+        android:name="com.example.cheapfreegames.ui.storedeals.StoreDealsFragment"
+        android:label="StoreDealsFragment" >
+        <action
+            android:id="@+id/action_storeDealsFragment_to_gameActivity"
+            app:destination="@id/gameActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/gameActivity"
+        android:name="com.example.cheapfreegames.ui.game.GameActivity"
+        android:label="GameActivity" />
 </navigation>
