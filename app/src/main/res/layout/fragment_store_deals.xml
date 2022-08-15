@@ -30,9 +30,9 @@
 
             <ImageView
                 android:id="@+id/store_banner"
-                app:imageUrl="@{viewModel.store.images.banner}"
+                app:storeImageUrl="@{viewModel.store.images.banner}"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="75dp"
                 android:contentDescription="@null"
                 tools:src="@tools:sample/backgrounds/scenic"
                 app:layout_constraintStart_toStartOf="parent"
@@ -44,10 +44,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:paddingTop="32dp"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintTop_toBottomOf="@+id/store_banner"
-                app:storeTopDealsText="@{viewModel.store.storeName}"/>
+                app:storeTopDealsText="@{viewModel.store.storeName}"
+                tools:text="Top deals"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list_of_deals_result_grid"

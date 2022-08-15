@@ -37,7 +37,7 @@ interface CheapSharkApiService {
     @GET("games")
     suspend fun getGameLookupById(@Query("id") id: String): GameLookupResult
     @GET("deals")
-    suspend fun getListOfDealsByStoreId(@Query("storeId") storeId: String,
+    suspend fun getListOfDealsByStoreId(@Query("storeID") storeID: String,
                                         @Query("pageSize") pageSize: String,
                                         @Query("upperPrice") upperPrice: String): List<ListOfDealsResult>
     @GET("deals")

@@ -33,7 +33,7 @@ class StoreDealsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding.viewModel?.fetchStore(navigationArgs.storeId)
-//        binding.viewModel?.fetchTopDeals(navigationArgs.storeId)
+        if (navigationArgs.storeId == null) return
+        binding.viewModel?.fetchStoreWithTopDeals(navigationArgs.storeId!!)
     }
 }

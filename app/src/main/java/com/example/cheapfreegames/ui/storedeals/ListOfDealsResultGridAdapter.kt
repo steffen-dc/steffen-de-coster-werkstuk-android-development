@@ -65,11 +65,11 @@ class ListOfDealsResultGridAdapter : ListAdapter<ListOfDealsResult, ListOfDealsR
         holder.bind(listOfDealsResult)
 
         // create explicit intent to pass gameId to game activity
-//        holder.cardView.setOnClickListener {
-//            val context = holder.cardView.context
-//            val intent = Intent(context, GameActivity::class.java)
-//            intent.putExtra("gameId", holder.cardView.tag.toString())
-//            context.startActivity(intent)
-//        }
+        holder.cardView.setOnClickListener {
+            val context = holder.cardView.context
+            val intent = Intent(context, GameActivity::class.java)
+            intent.putExtra("gameId", holder.cardView.tag.toString())
+            context.startActivity(intent)
+        }
     }
 }
