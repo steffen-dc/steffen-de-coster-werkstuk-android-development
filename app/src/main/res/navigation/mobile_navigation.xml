@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_stores">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.cheapfreegames.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_stores"
+        android:name="com.example.cheapfreegames.ui.stores.StoresFragment"
+        android:label="@string/menu_stores"
+        tools:layout="@layout/fragment_stores" />
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_search_games"
         android:name="com.example.cheapfreegames.ui.searchgames.SearchGamesFragment"
-        android:label="@string/search_game"
+        android:label="@string/menu_search_game"
         tools:layout="@layout/fragment_search_games" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_wishlist"
         android:name="com.example.cheapfreegames.ui.wishlist.WishlistFragment"
         android:label="@string/menu_wishlist"
         tools:layout="@layout/fragment_wishlist" />

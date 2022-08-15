@@ -1,5 +1,6 @@
 package com.example.cheapfreegames
 
+import android.content.res.Resources
 import android.graphics.Paint
 import android.view.View
 import android.widget.ImageView
@@ -12,8 +13,10 @@ import com.example.cheapfreegames.model.StoreDeal
 import com.example.cheapfreegames.network.model.ApiStatus
 import com.example.cheapfreegames.network.model.Deal
 import com.example.cheapfreegames.network.model.ListOfGamesResult
+import com.example.cheapfreegames.network.model.Store
 import com.example.cheapfreegames.ui.game.DealsGridAdapter
 import com.example.cheapfreegames.ui.searchgames.ListOfGamesResultGridAdapter
+import com.example.cheapfreegames.ui.stores.StoresGridAdapter
 
 @BindingAdapter("price")
 fun bindPrice(textView: TextView, price: String?){
@@ -54,6 +57,22 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
     }
 }
 
+@BindingAdapter("storeImageUrl")
+fun bindStoreImage(imgView: ImageView, imgUrl: String?) {
+
+    var imgUrlWithPrefix: String? = "https://www.cheapshark.com/${imgUrl}"
+    if(imgUrl == null) imgUrlWithPrefix = null
+    imgUrlWithPrefix?.let {
+        val imgUri =  imgUrlWithPrefix.toUri().buildUpon().build()
+
+        imgView.load(imgUri)
+        imgView.load(imgUri) {
+            placeholder(R.drawable.loading_animation)
+            error(R.drawable.ic_broken_image)
+        }
+    }
+}
+
 @BindingAdapter("listOfGamesResultGridData")
 fun bindListOfGamesResultRecyclerView(recyclerView: RecyclerView, data: List<ListOfGamesResult>?) {
     val adapter = recyclerView.adapter as ListOfGamesResultGridAdapter
@@ -63,6 +82,12 @@ fun bindListOfGamesResultRecyclerView(recyclerView: RecyclerView, data: List<Lis
 @BindingAdapter("dealsGridData")
 fun bindDealsRecyclerView(recyclerView: RecyclerView, data: List<StoreDeal>?) {
     val adapter = recyclerView.adapter as DealsGridAdapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("storesGridData")
+fun bindStoresRecyclerView(recyclerView: RecyclerView, data: List<Store>?) {
+    val adapter = recyclerView.adapter as StoresGridAdapter
     adapter.submitList(data)
 }
 

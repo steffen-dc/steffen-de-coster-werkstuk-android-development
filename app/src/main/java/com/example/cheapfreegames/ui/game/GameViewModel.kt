@@ -3,6 +3,7 @@ package com.example.cheapfreegames.ui.game
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
+import com.example.cheapfreegames.R
 import com.example.cheapfreegames.database.WishlistDatabase
 import com.example.cheapfreegames.database.WishlistGame
 import com.example.cheapfreegames.database.WishlistGameRepository

@@ -4,9 +4,9 @@
     <string name="navigation_drawer_close">Close menu</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home" translatable="false">Home</string>
+    <string name="menu_stores">Stores</string>
+    <string name="menu_search_game">Search Game</string>
     <string name="menu_wishlist">Wishlist</string>
-    <string name="search_game">Search Game</string>
     <string name="game_title">Game Title</string>
     <string name="search_action">Search</string>
     <string name="top_deals_label">Top Deals</string>
