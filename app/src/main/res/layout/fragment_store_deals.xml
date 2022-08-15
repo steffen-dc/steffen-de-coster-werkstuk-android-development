@@ -33,10 +33,12 @@
                 app:storeImageUrl="@{viewModel.store.images.banner}"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
+                android:padding="4dp"
                 android:contentDescription="@null"
                 tools:src="@tools:sample/backgrounds/scenic"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@color/grey_900"/>
 
             <TextView
                 android:id="@+id/top_deals_label"

@@ -27,6 +27,7 @@
                     app:storeImageUrl="@{store.images.logo}"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
+                    android:padding="4dp"
                     android:contentDescription="@null"
                     tools:src="@tools:sample/backgrounds/scenic"
                     app:layout_constraintStart_toStartOf="parent"
